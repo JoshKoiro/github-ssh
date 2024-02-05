@@ -31,14 +31,14 @@ echo -e "\n"
 
 if [ "$startup" == "y" ]; then
 	echo -e "\nAdding ssh-keygen to .bashrc file...\n"
-	echo "echo ssh-agent started..." >>~/.bashrc
-	echo "eval $(ssh-agent -s)" >>~/.bashrc
+	echo "echo ssh-agent starting..." >>~/.bashrc
+	echo 'eval $(ssh-agent)' >>~/.bashrc
 	read -p "would you like to automatically add your key to ssh on login? (y/n) " startupKey
 	echo -e "\n"
 
 	if [ "$startup" == "y" ]; then
 		echo -e "\nAdding add-key command to .bashrc file...\n"
-		echo "ssh-add ~/.ssh/${authFile}"
+		echo "ssh-add ~/.ssh/${authFile}" >>~/.bashrc
 	elif [ "$newKey" == "n" ]; then
 		echo -e "\nSkipping adding keys to startup...You will have to use ssh-add <key-filepath> manually on each login."
 	else
@@ -53,9 +53,7 @@ else
 	exit 1
 fi
 
-echo -e "\nTesting connection....\n"
-ssh -T git@github.com
-
-echo -e "Reloading .bashrc..."
-
+echo -e "Reloading .bashrc...\n"
 source ~/.bashrc
+echo -e "Testing connection....\n"
+ssh -T git@github.com
