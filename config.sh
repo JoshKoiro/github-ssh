@@ -22,7 +22,7 @@ read -p "Above is the available keys generated on the system. Please type the na
 
 echo -e "\nBelow is your public key. Please copy this entirety of the contents below to enter on Github when you create the ssh key.\n"
 
-cat ~/.ssh/$authFile
+cat ~/.ssh/$authFile.pub
 
 echo -e "\n"
 
