@@ -15,3 +15,15 @@ The standard installation will run the script one time without saving any files 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.Githubusercontent.com/JoshKoiro/github-ssh/main/config.sh)"
 ```
+## Notes
+
+After installing the changes to the .bashrc file if you use `source ~/.bashrc` at any point during the session, it will create an additional `ssh-agent` process that will not be deleted when the session ends. In order to fix this, anytime you need to refresh the session make sure to kill the existing processes.
+```
+# Kill existing processes
+pkill ssh-agent
+
+# reload .bashrc
+source ~/.bashrc
+```
+
+This will prevent the accumulation of dangling processes.
