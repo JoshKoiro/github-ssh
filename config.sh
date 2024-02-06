@@ -21,6 +21,8 @@ resetColor() {
 	tput sgr0
 }
 
+color ${INFO} "Killing all existing ssh-agent processses...\n"
+pkill ssh-agent
 color 5 "\nThis script will walk you through the process of setting up Github authentication on your system using ssh.\n\n"
 
 setColor ${QUESTION}
@@ -60,10 +62,12 @@ echo -e "\n"
 if [ "$startup" == "y" ]; then
 	color ${INFO} "\nCreating .bashrc.backup..."
 	cp ~/.bashrc ~/.bashrc.bak
-	color ${INFO} "\nAdding ssh-keygen to .bashrc file...\n"
+	color ${INFO} "\nAdding ssh-agent to .bashrc file...\n"
 	setColor ${INFO}
 	echo "echo ssh-agent starting..." >>~/.bashrc
 	echo 'eval $(ssh-agent)' >>~/.bashrc
+	color ${INFO} "Starting ssh-agent...\n"
+	eval $(ssh-agent)
 	resetColor
 	setColor ${QUESTION}
 	read -p "would you like to automatically add your key to ssh on login? (y/n) " startupKey
@@ -74,6 +78,8 @@ if [ "$startup" == "y" ]; then
 		color ${INFO} "\nAdding add-key command to .bashrc file...\n"
 		setColor ${INFO}
 		echo "ssh-add ~/.ssh/${authFile}" >>~/.bashrc
+		color ${INFO} "Adding key to ssh-agent...\n"
+		ssh-add ~/.ssh/${authFile}
 		resetColor
 	elif [ "$newKey" == "n" ]; then
 		color ${INFO} "\nSkipping adding keys to startup...You will have to use ssh-add <key-filepath> manually on each login."
@@ -89,7 +95,6 @@ else
 	exit 1
 fi
 
-color ${INFO} "Reloading .bashrc...\n"
-source ~/.bashrc
+echo "trap 'ssh-agent -k' EXIT" >>~/.bashrc
 color ${INFO} "Testing connection....\n"
 ssh -T git@github.com
