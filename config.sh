@@ -64,6 +64,8 @@ if [ "$startup" == "y" ]; then
 	cp ~/.bashrc ~/.bashrc.bak
 	color ${INFO} "\nAdding ssh-agent to .bashrc file...\n"
 	setColor ${INFO}
+	echo "echo closing existing ssh-agents..." >>~/.bashrc
+	echo "pkill ssh-agent" >>~/.bashrc
 	echo "echo ssh-agent starting..." >>~/.bashrc
 	echo 'eval $(ssh-agent)' >>~/.bashrc
 	color ${INFO} "Starting ssh-agent...\n"
