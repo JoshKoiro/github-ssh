@@ -58,6 +58,8 @@ resetColor
 echo -e "\n"
 
 if [ "$startup" == "y" ]; then
+	color ${INFO} "\nCreating .bashrc.backup..."
+	cp ~/.bashrc ~/.bashrc.bak
 	color ${INFO} "\nAdding ssh-keygen to .bashrc file...\n"
 	setColor ${INFO}
 	echo "echo ssh-agent starting..." >>~/.bashrc
