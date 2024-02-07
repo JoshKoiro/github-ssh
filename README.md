@@ -6,7 +6,7 @@ By default, linux systems are not able to utilize private Github repos due to th
 This script is capable of performing the following tasks (verifying with the user which of these processes to execute)
 
 - Create a new public and private ssh key
-- modify the .bashrc file to automatically start the ssh-agent and add the ssh key to the agent to use when connecting to Github.
+- modify the .bashrc file to automatically start the ssh-agent and add the ssh key to the agent to use when connecting to Github. The script will also add a trap function to kill the ssh-agent once the session exits.
 
 **Note**, that the script will provide you with the public key to be able to copy to Github. In order for proper connection to Github, you must follow the prompts of the script to copy the public key that is created and add a new SSH key to your Github account. Follow the instructions at this link to create new SSH keys on Github. https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
@@ -26,4 +26,4 @@ pkill ssh-agent
 source ~/.bashrc
 ```
 
-This will prevent the accumulation of dangling processes.
+This will prevent the accumulation of dangling processes if you are reloading the bash session.
