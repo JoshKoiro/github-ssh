@@ -101,4 +101,4 @@ ssh -T git@github.com
 # Adding these to the end of the script to reload a fresh
 # version of bash with the changes in our configuration
 pkill ssh-agent
-exec bash
+color ${INFO} "\nPlease refresh your shell by running source ~/.bashrc\n"
