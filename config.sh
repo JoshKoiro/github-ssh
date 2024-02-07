@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Color Definitions based on the numerical value used in the tput command
 SUCCESS=14
 ERROR=9
@@ -100,5 +99,4 @@ color ${INFO} "Testing connection....\n"
 ssh -T git@github.com
 # Adding these to the end of the script to reload a fresh
 # version of bash with the changes in our configuration
-pkill ssh-agent
 color ${INFO} "\nPlease refresh your shell by running source ~/.bashrc\n"
