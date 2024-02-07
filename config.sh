@@ -98,3 +98,7 @@ fi
 echo "trap 'ssh-agent -k' EXIT" >>~/.bashrc
 color ${INFO} "Testing connection....\n"
 ssh -T git@github.com
+# Adding these to the end of the script to reload a fresh
+# version of bash with the changes in our configuration
+pkill ssh-agent
+exec bash
