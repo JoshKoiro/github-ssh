@@ -31,8 +31,10 @@ if [ "$newKey" == "y" ]; then
 	color ${INFO} "\nCreating new key...\n"
 	setColor ${QUESTION}
 	read -p "Please enter your email address that is associated with your Github account: " email
+	echo -e '\n'
+	read -p "Please enter the name of the key you would like to create (i.e. github): " keyName
 	color ${INFO}
-	ssh-keygen -t rsa -b 4096 -C $email
+	ssh-keygen -t rsa -b 4096 -C $email -f ${HOME}"/.ssh/"${keyName}
 	resetColor
 elif [ "$newKey" == "n" ]; then
 	color ${INFO} "\nNo new keys created..."
