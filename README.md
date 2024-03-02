@@ -11,10 +11,20 @@ This script is capable of performing the following tasks (verifying with the use
 **Note**, that the script will provide you with the public key to be able to copy to Github. In order for proper connection to Github, you must follow the prompts of the script to copy the public key that is created and add a new SSH key to your Github account. Follow the instructions at this link to create new SSH keys on Github. https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
 ## Installation
+
+### Linux/Mac
 The standard installation will run the script one time without saving any files on your system. This script does all of the necessary modifications to the system to allow for seamless SSH connections to Github.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.Githubusercontent.com/JoshKoiro/github-ssh/main/config.sh)"
 ```
+
+### Windows
+This alternative script can be used if you are running on a windows compute 
+
+```
+
+```
+
 ## Notes
 
 After installing the changes to the .bashrc file if you use `source ~/.bashrc` at any point during the session, it will create an additional `ssh-agent` process that will not be deleted when the session ends. In order to fix this, anytime you need to refresh the session make sure to kill the existing processes.
