@@ -10,8 +10,26 @@ This script is capable of performing the following tasks (verifying with the use
 
 **Note**, that the script will provide you with the public key to be able to copy to Github. In order for proper connection to Github, you must follow the prompts of the script to copy the public key that is created and add a new SSH key to your Github account. Follow the instructions at this link to create new SSH keys on Github. https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
-## Installation
-The standard installation will run the script one time without saving any files on your system. This script does all of the necessary modifications to the system to allow for seamless SSH connections to Github.
+## Installation/Running
+This script will install all the necessary dependencies and configure openssh to authenticate git using keys with your github account.
+
+The standard installation will run the script one time without saving any files on your system. This script does all of the necessary modifications to the system to allow for seamless SSH connections to Github every time you use git through the terminal.
+
+**This script assumes you are running a debian-based distro**
+
+Depending on your distribution of debian, you will have to verify that you have these two commands installed on your system.
+
+- curl
+- sudo
+
+If not, install both of these as root using the `su -` command and installing via the apt package manager.
+
+```
+apt install curl -y
+apt install sudo -y
+```
+
+Next, run the script to configure the openssh-client. This script will verify that openssh-client and git-all are installed on your system prior to running.
 ```
 /bin/bash -c "$(curl -fsSL https://raw.Githubusercontent.com/JoshKoiro/github-ssh/main/config.sh)"
 ```
