@@ -21,12 +21,16 @@ Depending on your distribution of debian, you will have to verify that you have 
 
 - curl
 - sudo
+- source
+
+Most distributions will include these tools, but if you are installing a bare-bones setup of debian, they may not be included.
 
 If not, install both of these as root using the `su -` command and installing via the apt package manager.
 
 ```
 apt install curl -y
 apt install sudo -y
+apt install source -y
 ```
 
 Next, run the script to configure the openssh-client. This script will verify that openssh-client and git-all are installed on your system prior to running.
