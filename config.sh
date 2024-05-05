@@ -23,6 +23,7 @@ resetColor() {
 color ${INFO} "Installing Dependencies...\n"
 sudo apt install openssh-client -y
 sudo apt install curl -y
+sudo apt install git-all -y
 
 color ${INFO} "Killing all existing ssh-agent processses...\n"
 pkill ssh-agent
