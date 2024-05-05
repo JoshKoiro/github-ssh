@@ -20,6 +20,10 @@ resetColor() {
 	tput sgr0
 }
 
+color ${INFO} "Installing Dependencies...\n"
+sudo apt install openssh-client -y
+sudo apt install curl -y
+
 color ${INFO} "Killing all existing ssh-agent processses...\n"
 pkill ssh-agent
 color 5 "\nThis script will walk you through the process of setting up Github authentication on your system using ssh.\n\n"
